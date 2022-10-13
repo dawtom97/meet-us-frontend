@@ -1,31 +1,29 @@
 import React,{FC,FormEvent} from 'react'
 import {Link} from 'react-router-dom'
 
-const RegistrationFormComponent:FC = () => {
+const SigninFormComponent:FC = () => {
 
 
   const onSubmitHandler = (e:FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    console.log("clicked")
+    console.log("clicked login")
   }
 
   return (
     <div>
         <form onSubmit={onSubmitHandler}>
-            <h2>Create Account</h2>
-            <input name="name" type="text" placeholder='name'/>
+            <h2>Login</h2>
             <input name="email" type="text" placeholder='email'/>
             <input name="password" type="password" placeholder='password'/>
-            <input name="birthday_date" type="date" />
 
-            <button type="submit">Register</button>
+            <button type="submit">Login</button>
 
         </form>
 
-        <Link to="/signin">Login page</Link>
+        <Link to="/register">Register page</Link>
     </div>
   )
 }
 
-export default RegistrationFormComponent
+export default SigninFormComponent
