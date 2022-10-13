@@ -1,6 +1,6 @@
-import { useReducer,ChangeEvent } from "react";
-import { Action } from "../shared/models/action.interface";
-import { ValidatorFn } from "../utils/validatorFn";
+import { useReducer, ChangeEvent } from "react";
+import { Action } from "../../shared/models/action.interface";
+import { ValidatorFn } from "../../utils/validatorFn";
 import {
   InputActionType,
   INPUT_ACTION_BLUR,
@@ -37,31 +37,30 @@ const useInput = (validatorFn?: ValidatorFn) => {
 
   let shouldDisplayError = null;
 
-  if(validatorFn) {
+  if (validatorFn) {
     const isValid = validatorFn(text);
-    shouldDisplayError = !isValid && hasBeenTouched
+    shouldDisplayError = !isValid && hasBeenTouched;
   }
 
-  const textChangeHandler = (e:ChangeEvent<HTMLInputElement>) => {
-    dispatch({type: INPUT_ACTION_CHANGE, value:e.target.value})
-  }
+  const textChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    dispatch({ type: INPUT_ACTION_CHANGE, value: e.target.value });
+  };
 
   const blurChandler = () => {
-    dispatch({type:INPUT_ACTION_BLUR})
-  }
+    dispatch({ type: INPUT_ACTION_BLUR });
+  };
 
   const clearHandler = () => {
-    dispatch({type:INPUT_ACTION_CLEAR})
-  }
+    dispatch({ type: INPUT_ACTION_CLEAR });
+  };
 
   return {
     text,
     shouldDisplayError,
     textChangeHandler,
     blurChandler,
-    clearHandler
-  }
-
+    clearHandler,
+  };
 };
 
-export default useInput
+export default useInput;
