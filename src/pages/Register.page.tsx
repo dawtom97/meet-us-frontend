@@ -4,6 +4,7 @@ import RegistrationFormComponent from "../features/auth/components/RegistrationF
 const RegisterPage = () => {
   return (
     <div>
+
       <RegistrationFormComponent />
     </div>
   );

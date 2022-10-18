@@ -7,6 +7,7 @@ const HomePage = () => {
 
   const dispatch = useAppDispatch();
   const {isLoading,user} = useAppSelector(state=>state.auth);
+  console.log(user)
   const navigate = useNavigate();
 
   const handleLogout = () => {
