@@ -2,8 +2,8 @@ import React from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import PrivateRoute from "./features/auth/components/PrivateRoute";
 import HomePage from "./pages/Home.page";
-import RegisterPage from "./pages/Register.page";
-import SigninPage from "./pages/Signin.page";
+import RegisterPage from "./pages/auth/Register.page";
+import SigninPage from "./pages/auth/Signin.page";
 
 function App() {
   return (

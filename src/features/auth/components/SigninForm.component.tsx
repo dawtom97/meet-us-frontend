@@ -4,6 +4,8 @@ import useInput from "../../../hooks/input/use-input";
 import { useAppDispatch, useAppSelector } from "../../../hooks/redux/hooks";
 import { validateEmail } from "../../../utils/emailValidator";
 import { validatePasswordLength } from "../../../utils/lengthValidator";
+import Button from "../../reusables/Button/Button.component";
+import Input from "../../reusables/Input/Input.components";
 import { login, reset } from "../auth-slice";
 import { LoginUser } from "../models/LoginUser.interface";
 
@@ -64,28 +66,30 @@ const SigninFormComponent: FC = () => {
   return (
     <div>
       <form onSubmit={onSubmitHandler}>
-        <h2>Login</h2>
-        <input
+        <Input
           value={email}
-          onChange={emailChangeHandler}
-          onBlur={emailBlurHandler}
+          change={emailChangeHandler}
+          blur={emailBlurHandler}
           name="email"
-          type="text"
+          label="Email"
           placeholder="email"
+          id="Email"
+          type="text"
         />
-        <input
+        <Input
           value={password}
-          onChange={passwordChangeHandler}
-          onBlur={passwordBlurHandler}
+          change={passwordChangeHandler}
+          blur={passwordBlurHandler}
           name="password"
           type="password"
           placeholder="password"
+          id="Password"
+          label="Password"
         />
 
-        <button type="submit">Login</button>
+        <Button isPrimary type="submit" text="Login"/>
       </form>
-
-      <Link to="/register">Register page</Link>
+    
     </div>
   );
 };

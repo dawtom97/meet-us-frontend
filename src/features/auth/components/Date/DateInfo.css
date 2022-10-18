@@ -1,0 +1,13 @@
+.date {
+    text-align: center;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.date__hour {
+    font-size: 3rem;
+}
+
+.date__day {
+    font-size: 1.2rem;
+}
