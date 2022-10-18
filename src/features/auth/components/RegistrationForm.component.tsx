@@ -1,12 +1,14 @@
-import React, { FC, FormEvent } from "react";
-import { Link } from "react-router-dom";
+import React, { FC, FormEvent,useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import useInput from "../../../hooks/input/use-input";
+import { useAppDispatch, useAppSelector } from "../../../hooks/redux/hooks";
 import { validateEmail } from "../../../utils/emailValidator";
 import {
   validateBirthdayLength,
   validateNameLength,
   validatePasswordLength,
 } from "../../../utils/lengthValidator";
+import { register,reset } from "../auth-slice";
 import { NewUser } from "../models/NewUser";
 
 const RegistrationFormComponent: FC = () => {
@@ -42,6 +44,21 @@ const RegistrationFormComponent: FC = () => {
     clearHandler: birthdayClearHandler,
   } = useInput(validateBirthdayLength);
 
+  const dispatch = useAppDispatch();
+
+  const {isLoading, isSuccess} = useAppSelector((state) => state.auth);
+
+  const navigate = useNavigate();
+
+
+  useEffect(()=>{
+    if(isSuccess) {
+      dispatch(reset());
+      clearForm();
+      navigate('/signin')
+    }
+  },[isSuccess,dispatch])
+
 
   const clearForm = () => {
     nameClearHandler();
@@ -65,8 +82,10 @@ const RegistrationFormComponent: FC = () => {
 
     console.log(newUser);
 
-    clearForm();
+    dispatch(register(newUser))
   };
+
+  if(isLoading) return <p>Loading...</p>
 
   return (
     <div>

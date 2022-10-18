@@ -1,8 +1,11 @@
-import React, { FC, FormEvent } from "react";
-import { Link } from "react-router-dom";
+import React, { FC, FormEvent,useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import useInput from "../../../hooks/input/use-input";
+import { useAppDispatch, useAppSelector } from "../../../hooks/redux/hooks";
 import { validateEmail } from "../../../utils/emailValidator";
 import { validatePasswordLength } from "../../../utils/lengthValidator";
+import { login, reset } from "../auth-slice";
+import { LoginUser } from "../models/LoginUser.interface";
 
 const SigninFormComponent: FC = () => {
   const {
@@ -21,6 +24,24 @@ const SigninFormComponent: FC = () => {
     clearHandler: passwordClearHandler,
   } = useInput(validatePasswordLength);
 
+  const dispatch = useAppDispatch();
+
+  const {isLoading, isSuccess,isAuthenticated} = useAppSelector((state) => state.auth);
+
+  const navigate = useNavigate();
+
+  useEffect(()=>{
+    if(isSuccess) {
+      dispatch(reset());
+      clearForm();
+    }
+  },[isSuccess,dispatch])
+
+  useEffect(()=>{
+    if(!isAuthenticated) return;
+    navigate('/')
+  },[isAuthenticated])
+
   const clearForm = () => {
     emailClearHandler();
     passwordClearHandler();
@@ -32,10 +53,13 @@ const SigninFormComponent: FC = () => {
     if (emailHasError || passwordHasError) return;
     if (email.length === 0 || password.length === 0) return;
 
-    const user = { email, password };
+    const loginUser:LoginUser = {email, password}
 
-    console.log(user);
+    dispatch(login(loginUser))
+
   };
+
+  if(isLoading) return <p>Loading....</p>
 
   return (
     <div>

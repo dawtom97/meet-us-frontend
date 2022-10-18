@@ -1,9 +1,12 @@
-import React from 'react'
-import SigninFormComponent from '../features/auth/components/SigninForm.component'
+import React from 'react';
+import SigninFormComponent from '../features/auth/components/SigninForm.component';
+import './Signin.page.css'
 
 const SigninPage = () => {
   return (
-    <div><SigninFormComponent/></div>
+    <div className="wrapper">
+      <SigninFormComponent/>
+      </div>
   )
 }
 
