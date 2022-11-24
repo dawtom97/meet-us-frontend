@@ -1,0 +1,24 @@
+.auth-wrapper {
+    background: linear-gradient(16deg, rgba(115,12,31,1) 0%, rgba(157,37,48,1) 47%, rgba(236,92,92,1) 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+
+}
+
+.auth-wrapper__link {
+    color: white;
+    font-weight: 300;
+    margin-top: 30px;
+    letter-spacing: 1px;
+    margin-bottom: 50px;
+}
+
+.auth-wrapper__link > a {
+    font-weight: 600;
+    color: white;
+}

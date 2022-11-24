@@ -1,5 +1,5 @@
-import React, { FC, FormEvent,useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import  { FC, FormEvent,useEffect } from "react";
+import {  useNavigate } from "react-router-dom";
 import useInput from "../../../hooks/input/use-input";
 import { useAppDispatch, useAppSelector } from "../../../hooks/redux/hooks";
 import { validateEmail } from "../../../utils/emailValidator";
@@ -8,6 +8,8 @@ import {
   validateNameLength,
   validatePasswordLength,
 } from "../../../utils/lengthValidator";
+import Button from "../../reusables/Button/Button.component";
+import Input from "../../reusables/Input/Input.components";
 import { register,reset } from "../auth-slice";
 import { NewUser } from "../models/NewUser";
 
@@ -90,43 +92,51 @@ const RegistrationFormComponent: FC = () => {
   return (
     <div>
       <form onSubmit={onSubmitHandler}>
-        <h2>Create Account</h2>
-        <input
+        <Input
           name="name"
           value={name}
-          onChange={nameChangeHandler}
-          onBlur={nameBlurHandler}
+          change={nameChangeHandler}
+          blur={nameBlurHandler}
           type="text"
           placeholder="name"
+          id="Name"
+          label="Name"
         />
-        <input
+        <Input
           value={email}
-          onChange={emailChangeHandler}
-          onBlur={emailBlurHandler}
+          change={emailChangeHandler}
+          blur={emailBlurHandler}
           name="email"
-          type="text"
+          label="Email"
           placeholder="email"
+          id="Email"
+          type="text"
         />
-        <input
+        <Input
           value={password}
-          onChange={passwordChangeHandler}
-          onBlur={passwordBlurHandler}
+          change={passwordChangeHandler}
+          blur={passwordBlurHandler}
           name="password"
           type="password"
           placeholder="password"
+          id="Password"
+          label="Password"
         />
-        <input
+        <Input
           value={birthday_date}
           name="birthday_date"
-          onChange={birthdayChangeHandler}
-          onBlur={birthdayBlurHandler}
+          change={birthdayChangeHandler}
+          blur={birthdayBlurHandler}
           type="date"
+          placeholder="Birthday Date"
+          id="Birthday"
+          label="Birthday"
         />
 
-        <button type="submit">Register</button>
+        <Button isPrimary type="submit" text="Register"/>
       </form>
 
-      <Link to="/signin">Login page</Link>
+
     </div>
   );
 };

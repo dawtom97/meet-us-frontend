@@ -1,0 +1,26 @@
+
+
+.input__field {
+background: rgba( 0, 0, 0, 0.4 ) !important;
+padding: 13px 6px;
+font-size: 12px;
+backdrop-filter: blur( 9px );
+-webkit-backdrop-filter: blur( 9px );
+border: none;
+color: white;
+width: 100%;
+min-width: 260px;
+letter-spacing: 2px;
+font-weight: 300;
+outline: none;
+margin:13px 0;
+}
+
+.input__field::placeholder {
+    color: rgb(201, 201, 201);
+
+}
+
+.input__field:focus {
+    box-shadow: 0px 5px 15px rgba(22, 22, 22, 0.589);
+}
